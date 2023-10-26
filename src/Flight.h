@@ -27,9 +27,9 @@ class Flight{
     public:
     Flight();
     Flight(location o, location d, time h, double p, int q);
-    void addDestination(std::string s);
+    void addDestination(std::string city, std::string country);
     location destination();
-    void addOrigin(std::string s);
+    void addOrigin(std::string city, std::string country);
     location origin();
     void addTime(int hr, int min);
     time time();

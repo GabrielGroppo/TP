@@ -1,10 +1,6 @@
  TP: Sistema de Passagens aéreas
-
-
-
- 
  • Descrição:
-	X é um sistema de reserva de passagens aéreas que permite oferecer aos usuários a capacidade de pesquisar, selecionar e reservar voos para destinos diversos. Além disso, ele também possui funcionalidade de cadastro, login e edição do perfil dos usuários, o que promove facilidade para utilizações futuras. Seu principal objetivo é permitir que a execução de todas essas tarefas seja feita de forma eficaz e intuitiva.
+	Flight Express é um sistema de reserva de passagens aéreas que permite oferecer aos usuários a capacidade de pesquisar, selecionar e reservar voos para destinos diversos. Além disso, ele também possui funcionalidade de cadastro, login e edição do perfil dos usuários, o que promove facilidade para utilizações futuras. Seu principal objetivo é permitir que a execução de todas essas tarefas seja feita de forma eficaz e intuitiva.
 
  •Requisitos do Projeto:
     - Perfil:
@@ -32,7 +28,7 @@
 Class User {
     • Atributos:
         - Name (string)
-        - CPF   (Long int)
+        - CPF   (int)
         - email (string)
         - password (string)
         - flight tickets (Flight)
@@ -51,20 +47,48 @@ Class User {
 
 Class Flight{
     • Atributos:
-        - Origin (string)
-        - Destination (string)
-        - Hour (int)
-        - Minutes (int)
-        - Price (double)
-        - Seat (vector<int>)
+        -struct location{
+            - city (string)
+            - country (string)
+        }
+        - struct time{
+            - hour (int)
+            - minutes (int)
+        }
+
+            - Origin (location)
+            - Destination (location)
+            - Hour (time)
+            - Minutes (time)
+            - Price (double)
+            - seats (int q)
+            - Seat (vector<bool>)
 
     • Métodos:
-        - addOrigin (string)
-        - addDestination (string)
+        - flight() - Construtor 1
+        - flight() - Construtor 2
+        - addOrigin (string city, string country)
+        - origin()
+        - addDestination (string city, string country)
+        - destintation()
         - addTime (int hour, int minutes)
+        - time()
         - addPrice (double)
-        - addSeat (Seat)
-        - selectTicket (Seat seat)
-        - buyTicket (User.Name, User.password, Seat seat, User.CreditCard)
+        - price()
+        - addSeat (int q)
+        - getSeat (int n)
+        - cancelSeat (int n)
+        - seats()
+}
+
+Class Flights{
+    • Atributos:
+        - flights_ (vector<Flight>)
+
+    • Métodos:
+        - addFlight (Flight)    
+
+
+
 
 }
