@@ -26,6 +26,7 @@
  •Modelagem do Sistema:
 
 Class User {
+
     • Atributos:
         - Name (string)
         - CPF   (int)
@@ -46,6 +47,7 @@ Class User {
 }
 
 Class Flight{
+
     • Atributos:
         -struct location{
             - city (string)
@@ -82,6 +84,7 @@ Class Flight{
 }
 
 Class Flights{
+    
     • Atributos:
         - flights_ (vector<Flight>)
 
