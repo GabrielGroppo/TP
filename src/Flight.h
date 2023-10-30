@@ -28,19 +28,17 @@ class Flight{
     Flight();
     Flight(location o, location d, time h, double p, int q);
     void addDestination(std::string city, std::string country);
-    location destination();
+    location printdestination();
     void addOrigin(std::string city, std::string country);
-    location origin();
+    location printorigin();
     void addTime(int hr, int min);
-    time time();
+    time printtime();
     void addPrice(double p);
-    double price();
+    double printprice();
     void addSeat(int q);
     void getSeat(int n);
     void cancelSeat(int n);
-    std::vector<int> seats();
-
-
+    std::vector<int> printseats();
 };
 
 
