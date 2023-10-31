@@ -17,6 +17,7 @@
 
  •Levantamento de Requisitos:
     - Requisitos Funcionais:
+    
        * O sistema tem que ser capaz de cadastrar o usuário com os seguintes dados: nome, cpf, email, senha de login, cartão de crédito/débito
        * Acessar e alterar os dados pessoais do usuário caso ele deseje
        * Selecionar os voos, classe e assento das passagens.
@@ -37,6 +38,7 @@ A classe User é essencial para a representação e gerenciamento dos passageiro
 
 
 •Atributos:
+
 	-Name (string): Armazena o nome do passageiro.
 	-Cpf (Long int): Guarda o número do Cadastro de Pessoa Física (CPF) do passageiro.
 	-email (string): Mantém o endereço de e-mail do passageiro.
@@ -45,15 +47,19 @@ A classe User é essencial para a representação e gerenciamento dos passageiro
 	-CreditCard (long int): Armazena o número do cartão de crédito do passageiro, que é essencial para efetuar compras de passagens.
  
 • Métodos:
-	-User(): O construtor da classe para criar um novo usuário.
-	-addName (string): Permite adicionar  o nome do passageiro.
-	-addCpf (long int): Permite adicionar o número do CPF do passageiro.
-	-addEmail(string): Permite adicionar o e-mail do passageiro.
-	-addPassword (string): Permite adicionar asenha do passageiro.
-	-add CreditCard (long int): Permite adicionar o número do cartão de crédito do passageiro.
-	-checkTickets(): Retorna informações sobre as passagens adquiridas pelo usuário.
-	-cancelTicket (string flight, int hour, int minutes, int seat): Permite ao usuário cancelar uma passagem com base nas informações fornecidas.
-	-buyTicket (string origin, string destination, int hour, int min, int seat): Permite ao usuário comprar uma passagem para um voo específico.
+
+	-User():Este é o construtor da classe user. Ele inicializa as variáveis de membro da classe, com valores padrão.
+	-addName (string):  Permite que o usuário adicione um nome de usuário, desde que o nome atual esteja vazio. Se já existir um nome, exibe uma mensagem de erro.
+ 	-changeName (string): Permite que o usuário altere seu nome de usuário, desde que o nome atual não esteja vazio. Se não houver um nome de usuário definido, exibe uma mensagem de erro.
+	-addCpf (long int): Permite que o usuário adicione um número de CPF, desde que o CPF atual ainda nãoesteja definido . Se já existir um CPF, exibe uma mensagem de erro.
+	-addEmail(string):  Permite que o usuário adicione um endereço de e-mail, desde que o endereço de e-mail atual esteja vazio. Se já houver um endereço de e-mail, exibe uma mensagem de erro.
+ 	changeEmail( string): permite que o usuário altere seu endereço de e-mail, desde que o endereço de e-mail atual não esteja vazio. Se não houver um endereço de e-mail definido, exibe uma mensagem de erro.
+	-addPassword (string): Esta função permite que o usuário adicione uma senha, desde que a senha atual esteja vazia. Se já existir uma senha, exibe uma mensagem de erro.
+	-changePassword (string), string): Permite que o usuário altere sua senha, desde que haja uma senha definida. Ela verifica se a senha atual coincide com a senha fornecida e, se coincidir, atualiza a senha. Caso contrário, exibe uma mensagem de erro.
+	-add CreditCard (long int): Permite que o usuário adicione um número de cartão de crédito, desde que o número de cartão de crédito atual aida não esteja definido. Se já houver um número de cartão de crédito, exibe uma mensagem de erro.
+	-checkTickets():Exibe informações sobre cada bilhete disponível, como código do voo, origem, destino, horário, assento e preço.
+	-cancelTicket (string flight, int hour, int minutes, int seat): Permite que um usuário cancele um bilhete para um voo. Verifica se o assento especificado está reservado pelo usuário e, se for o caso, remove o bilhete da lista de bilhetes do usuário. Caso contrário retorna "assento ocupado".
+	-buyTicket (string origin, string destination, int hour, int min, int seat): Permite que um usuário compre um bilhete para um voo. Ele verifica se o assento desejado está disponível no voo especificado e, se estiver disponível, adiciona o bilhete à lista de bilhetes do usuário.Caso contrário retorna "assento ocupado".
 
 
 •Classe Flight:
@@ -61,6 +67,7 @@ A classe Flight é crucial para o gerenciamento de informações relacionadas ao
 
 
 •Atributos:
+
 	-Origin (location): Representa a localização de origem do voo, com atributos city (cidade) e country (país).
 	-Destination (location): Representa a localização de destino do voo, com atributos city (cidade) e country (país).
 	-Hour (time): Representa o horário de partida do voo, com atributos hour (hora) e minutes (minutos).
@@ -69,6 +76,7 @@ A classe Flight é crucial para o gerenciamento de informações relacionadas ao
 	-Seat (vector<bool>): Mantém um vetor que rastreia a disponibilidade de cada assento no voo.
  
 •Métodos:
+
 	-flight() (Construtor 1): Constrói um objeto Flight sem atribuir valores iniciais.
 	-flight() (Construtor 2): Constrói um objeto Flight com informações de origem, destino, horário, preço e número de assentos.
 	-addOrigin (string city, string country): Permite adicionar informações de origem ao voo.
