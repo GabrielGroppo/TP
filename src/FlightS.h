@@ -10,7 +10,10 @@ class Flights{
     std::vector<Flight> flights_;
 
     public:
+        Flights();
         void addFlight(Flight);
+        void showFlights();
+        Flight returnFlight(int n);
 };
 
 

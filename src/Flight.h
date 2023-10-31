@@ -1,52 +1,58 @@
 #ifndef FLIGHT_H
 #define FLIGHT_H
 #include<iostream>
-#include<string>
 #include<vector>
+#include<string>
+struct location{
+    std::string city;
+    std::string country;
+};
 
+struct Time{
+        int hour;
+        int minutes;
+};
+
+struct ticket{
+        int voo;
+        location origin;
+        location destination;
+        Time hour;
+        int seat;
+        double price;
+};
 
 class Flight{
     private:
-        struct location{
-            std::string city;
-            std::string country;
-        };
-
-        struct time{
-            int hour;
-            int minutes;
-        };
-
-            location origin;
-            location destination;
-            time hour;
-            double price;
-            int seats;
-            std::vector<bool> seat;
+        int codigo_voo;
+        location origin;
+        location destination;
+        Time hour;
+        double price;
+        int seats;
+        std::vector<bool> seat;
 
     public:
-    Flight();
-    Flight(location o, location d, time h, double p, int q);
-    void addDestination(std::string city, std::string country);
-    location printdestination();
-    void addOrigin(std::string city, std::string country);
-    location printorigin();
-    void addTime(int hr, int min);
-    time printtime();
-    void addPrice(double p);
-    double printprice();
-    void addSeat(int q);
-    void getSeat(int n);
-    void cancelSeat(int n);
-    std::vector<int> printseats();
+        Flight();
+        Flight(location o, location d, Time h, double p, int q);// construtores
+        void addDestinationCity(std::string city);
+        void addDestinationCountry(std::string country);
+        void addOriginCity(std::string city);
+        void addOriginCountry(std::string country);
+        void addTimeHour(int hr);
+        void addTimeMinute(int min);
+        void addPrice(double p);
+        void addFlightCode(int c);
+        int code();
+        void addSeat(int q);
+        int returnSeats();
+        bool seatCheck(int n);
+        double returnPrice();
+        ticket getSeat(int n);
+        void cancelSeat(int n);
+        void printFlight();
+        void printseats();// interface primaria entre usuario e o voo
+
+
 };
-
-
-
-
-
-
-
-
-
 #endif
