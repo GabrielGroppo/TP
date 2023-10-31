@@ -16,7 +16,7 @@ class user{
         void changeEmail(string email);
         void addPassword(string password);
         void changePassword(string old_password,string new_password);
-        void addCredit_Card(string cc);
+        void addCredit_Card(int cc);
         void checkTickets ();// mostra todos os tickets que o usuario possui do mais proximo do voo ao mais distante
         void cancelTicket (int codigo_voo, int seat, Flights System);
         void pay(int n);
