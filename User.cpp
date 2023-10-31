@@ -1,4 +1,3 @@
-
 using namespace std;
 #include <list>
 #include "flightS.h"
@@ -12,17 +11,18 @@ user::user(){
     cpf_ = 0;
     credit_card = 0;
     credit_card_debit = 0;
+    tickets_;
 }
 void user::buyTicket(int codigo_voo, int seat, Flights System){
     if((System.RetornaVoo(codigo_voo)).seatCheck(seat, " ")){
-        System.RetornaVoo(codigo_voo).getSeat(seat, name);
+        System.RetornaVoo(codigo_voo).getSeat(seat, name_);
     }else{
         std::cout<<"assento ocupado"<<endl;
     }
 }
 void user::cancelTicket (int codigo_voo, int seat, Flights System){
-     if(System.RetornaVoo(codigo_voo).seatCheck(seat,name)){
-        System.RetornaVoo(codigo_voo).cancelSeat(seat, name);
+     if(System.RetornaVoo(codigo_voo).seatCheck(seat,name_)){
+        System.RetornaVoo(codigo_voo).cancelSeat(seat, name_);
     }else{
         std::cout<<"assento ocupado"<<endl;
     } 
@@ -96,9 +96,10 @@ void user::changePassword(string old_password,string new_password){
      }
      else{
           cout <<"Senha incorreta!" << endl;
-     }
+        }
+    }
 }
-void user::addCredit_Card(int cc){
+void user:: addCredit_Card(int cc){
   if(credit_card == 0){
    credit_card = cc;
   }
