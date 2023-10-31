@@ -48,7 +48,8 @@ class Flight{
         int returnSeats();
         bool seatCheck(int n);
         double returnPrice();
-        ticket getSeat(int n);
+        void getSeat(int n);
+        ticket getTicket(int n);
         void cancelSeat(int n);
         void printFlight();
         void printseats();// interface primaria entre usuario e o voo

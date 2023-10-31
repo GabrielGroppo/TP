@@ -67,6 +67,10 @@ Flights::Flights(){
     arquivo.close();
 }
 
+void Flights::changeFlight(int codigo, int seat){
+    flights_[codigo-1].getSeat(seat);
+}
+
 void Flights::addFlight(Flight x){
     flights_.push_back(x);
 }
@@ -84,4 +88,5 @@ Flight Flights::returnFlight(int codigo){
             return flights_[a];
         }
     }
+    return flights_[codigo];
 }

@@ -2,7 +2,6 @@
 #include<iostream>
 #include<string>
 #include<vector>
-
 Flight::Flight(){
         destination.city = " ";
         destination.country = " ";
@@ -63,23 +62,31 @@ double Flight::returnPrice(){
     return price;
 }
 
-ticket Flight::getSeat(int n){
-    if(0<=n-1&&n-1<=seats){
-        if(!(seat[n-1])){
-            seat[n-1] = 1;
+void Flight::getSeat(int n){
+    if(n > 0){
+        if(n < seats){
+                if(seat[n-1]== 0){
+                seat[n-1] = 1;
+                }
         }
     }
-    return ticket {codigo_voo,origin,destination,hour,n,price};
+    else{
+        std::cout << "Esse assento não existe!" << std::endl;
+    }
+}
+
+ticket Flight::getTicket(int n){
+        return ticket {codigo_voo,origin, destination, hour, n, price};
 }
 
 void Flight::cancelSeat(int n){
     if(0<=n-1&&n-1<=seats){
         if(seat[n-1]){
-            seat[n-1] = 0;
+            seat[n-1] = false;
         }
     }
     else{
-        std::cout << "Assento Desocupado" << std:: endl;
+        std::cout << "Não existe esse asssento!" << std:: endl;
     }
     
 }

@@ -16,6 +16,15 @@ user::user(){
     tickets_;
 }
 
+void user::perfil(){
+  cout << "Perfil " << endl
+       << "Nome: " << name_ << endl
+       << "CPF: " << cpf_ << endl
+       << "Email: " << email_ << endl
+       << "Senha: " << password_ << endl
+       << "Cartão de Credito: " << credit_card << endl;
+}
+
 void user::addName (string name){
   if(name_.empty()){
     name_ = name;
@@ -30,11 +39,11 @@ void user::changeName(string name){
   }
  else{
    name_ = name;
-     cout <<" Nome de usuário alterado!" << endl;
+     cout <<"Nome de usuário alterado!" << endl;
      }
 }
 
-void user::addCpf(int cpf){
+void user::addCpf(long int cpf){
    if(cpf_ == 0 ){
    cpf_ = cpf;
   }
@@ -92,33 +101,39 @@ void user:: addCredit_Card(int cc){
 
 void user::checkTickets (){
     for(auto it=tickets_.begin();it!=tickets_.end();it++){
-        std::cout<<"codigo do voo:"<<(*it).voo<<"  origem:"<<(*it).origin.city<<","<<(*it).origin.country;
-        std::cout<<"  destino:"<<(*it).origin.city<<","<<(*it).origin.country<<endl;
-        std::cout<<"horario:"<<(*it).hour.hour<<":"<<(*it).hour.minutes<<"  assento:"<<(*it).seat;
-        std::cout<<"  preço:"<<(*it).price<<"dolares"<<endl;
+        std::cout<<"Passagem:" << endl
+                 <<"Codigo do voo: "<<(*it).voo<< endl
+                 <<"Origem: "<<(*it).origin.city<<", "<<(*it).origin.country << endl
+                 <<"Destino: "<<(*it).destination.city<<", "<<(*it).destination.country<< endl
+                 <<"Horario: "<<(*it).hour.hour<<":"<<(*it).hour.minutes << endl
+                 <<"Assento: "<<(*it).seat <<"  Preço: $"<<(*it).price<<",00"<< endl;
     }
 }
 
-void user::cancelTicket (int codigo_voo, int seat, Flights System){
-     if(System.returnFlight(codigo_voo).seatCheck(seat)){
-        System.returnFlight(codigo_voo).cancelSeat(seat);
-            for(auto itr = tickets_.begin(); itr != tickets_.end(); itr++){
-                if(itr->voo == codigo_voo){
-                    tickets_.erase(itr);
-                    break;
-                }
+void user::cancelTicket(int codigo_voo, int seat, Flights& System){
+    if(System.returnFlight(codigo_voo).seatCheck(seat)){
+        for(auto itr = tickets_.begin(); itr != tickets_.end(); itr++){
+            if(itr->seat == System.flights_[codigo_voo-1].seatCheck(seat)){
+                System.flights_[codigo_voo-1].cancelSeat(seat);
+                  tickets_.erase(itr);
+                  break;
             }
-    }else{
+            // MENSAGEM DE O ASSENTO NÃO É SEU
+        }
+    }
+    else{
         std::cout<<"assento desocupado"<<endl;
     } 
 }
 
-void user::buyTicket(int codigo_voo, int seat, Flights System){
-    if(!(System.returnFlight(codigo_voo)).seatCheck(seat)){
-        System.returnFlight(codigo_voo).getSeat(seat);
-    }else{
-        std::cout<<"assento ocupado"<<endl;
-    }
+void user::buyTicket(int codigo_voo, int seat, Flights& System){
+      if(System.returnFlight(codigo_voo).seatCheck(seat) == 0){
+          System.flights_[codigo_voo-1].getSeat(seat);
+          tickets_.push_front(System.returnFlight(codigo_voo).getTicket(seat));
+      }
+      else{
+          std::cout<<"assento ocupado"<<endl;
+      }
 }
 
 
