@@ -77,20 +77,24 @@ A classe Flight é crucial para o gerenciamento de informações relacionadas ao
  
 •Métodos:
 
-	-flight() (Construtor 1): Constrói um objeto Flight sem atribuir valores iniciais.
-	-flight() (Construtor 2): Constrói um objeto Flight com informações de origem, destino, horário, preço e número de assentos.
-	-addOrigin (string city, string country): Permite adicionar informações de origem ao voo.
+	-flight() (Construtor 1): Este é o construtor da classe Flight que inicializa todas as variáveis de membro com valores padrão
+	-flight() (Construtor 2): Este é um construtor sobrecarregado que permite criar um objeto Flight com valores específicos para todas as variáveis de membro. Ele inicializa os membros da classe com os valores fornecidos.
+	-addOriginCity (string ): Permite adicionar uma cidade de origem ao objeto Flight, desde que a cidade de origem atual esteja vazia.
+ 	-addOriginCountry (string): Permite adicionar um país de origem ao objeto Flight, desde que o país de origem atual esteja vazio.
 	-origin(): Retorna as informações de origem do voo.
-	-addDestination (string city, string country): Permite adicionar informações de destino ao voo.
-	-destination(): Retorna as informações de destino do voo.
-	-addTime (int hour, int minutes): Permite definir o horário de partida do voo.
-	-time(): Retorna o horário de partida do voo.
-	-addPrice (double): Define o preço da passagem para o voo.
-	-price(): Retorna o preço da passagem.
-	-addSeat (int q): Adiciona um assento específico em relação ao usuário
-	-getSeat (int n): Obtém informações sobre um assento específico com base em seu número.
-	-cancelSeat (int n): Marca um assento como cancelado no voo, distribuindo do usuário
-	-seats(): Retorna o número total de assentos e a disponibilidade deles no voo.
+	-addDestinationCity (string ):Permite adicionar uma cidade de destino ao objeto Flight, desde que a cidade de destino atual esteja vazia.
+	-addDestinationCountry(string): Permite adicionar um país de destino ao objeto Flight, desde que a cidade de destino atual esteja vazia.
+	-addTimeHour (int ): Permite definir o horário de partida do voo.
+ 	-addTimeMinute (int): Permite definir os minutos de partida do voo, desde que não estejam já definidos.
+	-time(): Retorna o horário de partida do voo, desde que não estejam já definidos.
+	-addPrice (double): Define o preço da passagem para o voo, desde que o preço atual esteja 0.
+	-addSeat (int q): Adiciona um assento específico em relação ao usuário, desde que a quantidade atual de assentos seja 0. Também inicializa um vetor de assentos com os valores padrão.
+	-seatCheck(int n, std::string name): Verifica se um assento específico está ocupado por um usuário com o nome especificado.
+        -flightCheck(int codigo): Verifica se o código do voo corresponde ao código especificado.
+	Flight::returnPrice(): Retorna o preço do voo.
+	-Flight::getSeat(int n, string): Permite a um usuário reservar um assento, desde que o assento esteja disponível.
+	-Flight::cancelSeat(int n, string): Permite a um usuário cancelar a reserva de um assento, desde que o assento esteja ocupado pelo usuário especificado.
+	-printseats():Retorna um vetor de inteiros que representa os assentos disponíveis no voo.
  
 •Classe Flights: 
 
