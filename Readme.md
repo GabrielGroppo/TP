@@ -7,9 +7,9 @@
 	A criação de um site de reserva de passagens aéreas é um projeto que visa abordar uma necessidade crítica no setor de viagens e turismo. Com a crescente demanda por viagens aéreas em todo o mundo, a conveniência e a eficiência na reserva de passagens tornaram-se essenciais para viajantes e companhias aéreas. Este projeto busca resolver a complexidade e a inconveniência muitas vezes associadas ao processo de reserva de passagens aéreas. Assim sendo, X é um sistema de reserva de passagens aéreas que permite oferecer aos usuários a capacidade de pesquisar, selecionar e reservar voos para destinos diversos. Além disso, ele também possui funcionalidade de cadastro, login e edição do perfil dos usuários, o que promove facilidade para utilizações futuras. Seu principal objetivo é permitir que a execução de todas essas tarefas seja feita de forma eficaz e intuitiva. Por fim, a criação de um projeto de reserva de passagens aéreas é uma iniciativa que busca melhorar a experiência de viagem para os passageiros e fornecer um serviço eficiente e valioso, tendo o potencial de simplificar e aprimorar o processo de reserva de voos, tornando-o mais acessível e conveniente para todos os envolvidos.
 
  •Requisitos do Projeto:
+	
     - Perfil:
         O Sistema deve ser capaz de realizar o cadastro dos usuários e armazená-los dentro do sistema para poderem serem reutilizados pelos próprios usuários, além disso deve permitir a edição de informações pessoais caso seja necessário. A criação de um perfil é vista como um requisito fundamental para o desenvolver do projeto, visto que proporciona agilidade nas reservas das passagens, onde as informações pessoais já estão salvas e podem ser utilizadas repetidas vezes, além de criar uma experiência mais agradável e simplificada aos clientes;
-	
     - Reserva:
 	O sistema de reservas deve possibilitar ao usuário selecionar voos, realizar a reserva de passagens e efetuar cancelamentos; 
     - Pagamento:
