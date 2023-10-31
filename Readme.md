@@ -91,15 +91,17 @@ A classe Flight é crucial para o gerenciamento de informações relacionadas ao
 	-addSeat (int q): Adiciona um assento específico em relação ao usuário, desde que a quantidade atual de assentos seja 0. Também inicializa um vetor de assentos com os valores padrão.
 	-seatCheck(int n, std::string name): Verifica se um assento específico está ocupado por um usuário com o nome especificado.
         -flightCheck(int codigo): Verifica se o código do voo corresponde ao código especificado.
-	Flight::returnPrice(): Retorna o preço do voo.
-	-Flight::getSeat(int n, string): Permite a um usuário reservar um assento, desde que o assento esteja disponível.
-	-Flight::cancelSeat(int n, string): Permite a um usuário cancelar a reserva de um assento, desde que o assento esteja ocupado pelo usuário especificado.
+	-returnPrice(): Retorna o preço do voo.
+	-getSeat(int n, string): Permite a um usuário reservar um assento, desde que o assento esteja disponível.
+	-cancelSeat(int n, string): Permite a um usuário cancelar a reserva de um assento, desde que o assento esteja ocupado pelo usuário especificado.
 	-printseats():Retorna um vetor de inteiros que representa os assentos disponíveis no voo.
  
 •Classe Flights: 
 
 •Atributos:
+
 	-flights_ (vector<Flight>): Armazena um vetor de objetos Flight para representar uma coleção de voos.
  
 •Métodos:
-addFlight (Flight): Permite adicionar um objeto Flight à coleção de voos Flights.
+
+	-RetornaVoo(int codigo): Essa função aceita um código de voo como argumento e procura na lista de voos representada por flights_. Ela procura na lista de voos, verificando se o código do voo corresponde ao código fornecido.Se encontrar um voo com o código correspondente,retorna esse voo.
