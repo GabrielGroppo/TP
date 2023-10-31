@@ -6,13 +6,12 @@ using namespace std;
 #include "user.h"
 
 user::user(){
-    string name;
-    string email;
-    string password;
-    int cpf;
-    int credit_card;
-    int credit_card_debit;
-    list<ticket> tickets_;
+    name_ = "";
+    email_ = "";
+    password_ = "";
+    cpf_ = 0;
+    credit_card = 0;
+    credit_card_debit = 0;
 }
 void user::buyTicket(int codigo_voo, int seat, Flights System){
     if((System.RetornaVoo(codigo_voo)).seatCheck(seat, " ")){
@@ -41,24 +40,24 @@ void user::addName (string name){
     name_ = name;
   }
   else{
- cout <<" Já existe um nome de usuário" << endl;
+ cout <<" Já existe um nome de usuário!" << endl;
   }
 }
 void user::changeName(string name){
  if(name_.empty()){
-  cout <<" Não existe nenhum nome de usuário" << endl;
+  cout <<" Não existe nenhum nome de usuário!" << endl;
   }
  else{
    name_ = name;
-     cout <<" Nome de usuário alterado" << endl;
+     cout <<" Nome de usuário alterado!" << endl;
      }
 }
 void user::addCpf(int cpf){
-   if(cpf_.empty()){
+   if(cpf_ == 0 ){
    cpf_ = cpf;
   }
   else{
- cout <<" Já existe um cpf para esse usuário" << endl;
+ cout <<" Já existe um cpf para esse usuário!" << endl;
   }
 }
 void user::addEmail(string email){
@@ -66,16 +65,16 @@ void user::addEmail(string email){
     email_ = email;
   }
   else{
- cout <<" Já existe um email para esse usuário" << endl;
+ cout <<" Já existe um email para esse usuário!" << endl;
   }
 }
 void user::changeEmail(string email){
    if(email_.empty()){
-  cout <<" Não existe nenhum email para esse usuário" << endl;
+  cout <<" Não existe nenhum email para esse usuário!" << endl;
   }
  else{
   email_ = email;
-  cout <<"Email foi alterado" << endl;
+  cout <<"Email foi alterado!" << endl;
      }
 }
 void user::addPassword(string password){
@@ -83,20 +82,24 @@ void user::addPassword(string password){
     password_ = password;
   }
   else{
- cout <<" Já existe uma senha para esse usuário" << endl;
+ cout <<" Já existe uma senha para esse usuário!" << endl;
   }
 }
 void user::changePassword(string old_password,string new_password){
   if(password_.empty()){
-  cout <<" Não existe nenhuma senha para esse usuário" << endl;
+  cout <<" Não existe nenhuma senha para esse usuário!" << endl;
   }
  else{
-  password_ = password;
-  cout <<"Senha foi alterada" << endl;
+  if(password_ == old_password){
+      password_ = new_password;
+  cout <<"Senha foi alterada!" << endl;
+     }
+     else{
+          cout <<"Senha incorreta!" << endl;
      }
 }
-void user::addCredit_Card(string cc){
-  if(credit_card.empty()){
+void user::addCredit_Card(int cc){
+  if(credit_card == 0){
    credit_card = cc;
   }
   else{
