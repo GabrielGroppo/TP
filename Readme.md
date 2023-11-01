@@ -88,10 +88,11 @@ A classe Flight é crucial para o gerenciamento de informações relacionadas ao
 	-getSeat(int n, string): Permite a um usuário reservar um assento, desde que o assento esteja disponível.
 	-cancelSeat(int n, string): Permite a um usuário cancelar a reserva de um assento, desde que o assento esteja ocupado pelo usuário especificado.
 	-printseats():Retorna um vetor de inteiros que representa os assentos disponíveis no voo.
-	-printflight() ////////
-	-int code() /////////
-	- addflightcode() ////
-	-getticket /////
+	-printflight():Imprime no terminal as informações do voo como sua origem e destino, horário, código do voo, quantos assentos ele possui e preço de sua 
+passagem.
+	-int code(): retorna o código do voo em questão.
+	- addflightcode(): define o código de voo. 
+	-getticket(int): retorna um objeto ticket que contém as informações do voo e o assento referido aquele ticket.
  
 •Classe Flights: 
 
@@ -102,6 +103,6 @@ A classe Flight é crucial para o gerenciamento de informações relacionadas ao
 •Métodos:
 
 	-Retornflight(int codigo): Essa função aceita um código de voo como argumento e procura na lista de voos representada por flights_. Ela procura na lista de voos, verificando se o código do voo corresponde ao código fornecido.Se encontrar um voo com o código correspondente,retorna esse voo.
-	-changeflight//
-	-addflight///
-	-showflight////
+	-changeflight(int , int ): utilizado como intermedio selecionar um assento no voo selecionado.
+	-addflight(Flight ): adiciona o dado voo no sistema que possui todos os voos, o disponiblizando para uso posteriormente.
+	-showflight(): Imprime no terminal todos os voos registrados no sistema e suas respectivas informações.
