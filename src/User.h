@@ -3,7 +3,7 @@
 #include<iostream>
 #include<string>
 #include<list>
-#include "flight.h"
+#include "Flight.h"
 #include "FlightManager.h"
 using std::string;
 class user{
