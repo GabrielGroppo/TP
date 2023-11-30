@@ -77,22 +77,20 @@ A classe Flight é crucial para o gerenciamento de informações relacionadas ao
 	-flight() (Construtor 2): Este é um construtor sobrecarregado que permite criar um objeto Flight com valores específicos para todas as variáveis de membro. Ele inicializa os membros da classe com os valores fornecidos.
 	-addOriginCity (string ): Permite adicionar uma cidade de origem ao objeto Flight, desde que a cidade de origem atual esteja vazia.
  	-addOriginCountry (string): Permite adicionar um país de origem ao objeto Flight, desde que o país de origem atual esteja vazio.
+	-origin(): Retorna as informações de origem do voo.
 	-addDestinationCity (string ):Permite adicionar uma cidade de destino ao objeto Flight, desde que a cidade de destino atual esteja vazia.
 	-addDestinationCountry(string): Permite adicionar um país de destino ao objeto Flight, desde que a cidade de destino atual esteja vazia.
 	-addTimeHour (int ): Permite definir o horário de partida do voo.
  	-addTimeMinute (int): Permite definir os minutos de partida do voo, desde que não estejam já definidos.
+	-time(): Retorna o horário de partida do voo, desde que não estejam já definidos.
 	-addPrice (double): Define o preço da passagem para o voo, desde que o preço atual esteja 0.
 	-addSeat (int q): Adiciona um assento específico em relação ao usuário, desde que a quantidade atual de assentos seja 0. Também inicializa um vetor de assentos com os valores padrão.
 	-seatCheck(int n, std::string name): Verifica se um assento específico está ocupado por um usuário com o nome especificado.
+        -flightCheck(int codigo): Verifica se o código do voo corresponde ao código especificado.
 	-returnPrice(): Retorna o preço do voo.
 	-getSeat(int n, string): Permite a um usuário reservar um assento, desde que o assento esteja disponível.
 	-cancelSeat(int n, string): Permite a um usuário cancelar a reserva de um assento, desde que o assento esteja ocupado pelo usuário especificado.
 	-printseats():Retorna um vetor de inteiros que representa os assentos disponíveis no voo.
-	-printflight():Imprime no terminal as informações do voo como sua origem e destino, horário, código do voo, quantos assentos ele possui e preço de sua 
-passagem.
-	-int code(): retorna o código do voo em questão.
-	- addflightcode(): define o código de voo. 
-	-getticket(int): retorna um objeto ticket que contém as informações do voo e o assento referido aquele ticket.
  
 •Classe Flights: 
 
@@ -102,7 +100,4 @@ passagem.
  
 •Métodos:
 
-	-Retornflight(int codigo): Essa função aceita um código de voo como argumento e procura na lista de voos representada por flights_. Ela procura na lista de voos, verificando se o código do voo corresponde ao código fornecido.Se encontrar um voo com o código correspondente,retorna esse voo.
-	-changeflight(int , int ): utilizado como intermedio selecionar um assento no voo selecionado.
-	-addflight(Flight ): adiciona o dado voo no sistema que possui todos os voos, o disponiblizando para uso posteriormente.
-	-showflight(): Imprime no terminal todos os voos registrados no sistema e suas respectivas informações.
+	-RetornaVoo(int codigo): Essa função aceita um código de voo como argumento e procura na lista de voos representada por flights_. Ela procura na lista de voos, verificando se o código do voo corresponde ao código fornecido.Se encontrar um voo com o código correspondente,retorna esse voo.
