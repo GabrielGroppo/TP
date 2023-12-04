@@ -15,15 +15,6 @@ user::user(){
     tickets_;
 }
 
-void user::perfil(){
-  cout << "Perfil " << endl
-       << "Nome: " << name_ << endl
-       << "CPF: " << cpf_ << endl
-       << "Email: " << email_ << endl
-       << "Senha: " << password_ << endl
-       << "Cartão de Credito: " << credit_card << endl;
-}
-
 void user::addName (string name){
   if(name_.empty()){
     name_ = name;
@@ -112,13 +103,18 @@ void user::checkTickets (){
 void user::cancelTicket(int codigo_voo, int seat, FlightManager& System){
     Flight &aux =System.returnFlight(codigo_voo);
     if(aux.seatCheck(seat)){
+        bool check=true;
         for(auto itr = tickets_.begin(); itr != tickets_.end(); itr++){
-            if(itr->seat == aux.seatCheck(seat)){
+            if(itr->voo==codigo_voo&&itr->seat==seat){
                 aux.cancelSeat(seat);
                   tickets_.erase(itr);
+                  check=false;
                   break;
             }
             // MENSAGEM DE O ASSENTO NÃO É SEU
+        }
+        if(check){
+            std::cout<<"esse assento nao eh seu"<<endl;
         }
     }
     else{
