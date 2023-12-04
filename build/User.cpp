@@ -1,8 +1,9 @@
 #include<iostream>
 #include <list>
-#include "FlightManager.h"
-#include "Flight.h"
-#include "User.h"
+#include"FlightManager.h"
+#include"Flight.h"
+#include"User.h"
+#include<list>
 #include<vector>
     using namespace std;
 
@@ -99,6 +100,10 @@ void user:: addCredit_Card(int cc){
 }
 
 void user::checkTickets (){
+  if(tickets_.empty() == true){
+      cout << "Você não possui tickets!" << endl;
+  }
+  else{
     for(auto it=tickets_.begin();it!=tickets_.end();it++){
         std::cout<<"Passagem:" << endl
                  <<"Codigo do voo: "<<(*it).voo<< endl
@@ -107,6 +112,7 @@ void user::checkTickets (){
                  <<"Horario: "<<(*it).hour.hour<<":"<<(*it).hour.minutes << endl
                  <<"Assento: "<<(*it).seat <<"  Preço: $"<<(*it).price<<",00"<< endl;
     }
+  }  
 }
 
 void user::cancelTicket(int codigo_voo, int seat, FlightManager& System){
@@ -118,7 +124,6 @@ void user::cancelTicket(int codigo_voo, int seat, FlightManager& System){
                   tickets_.erase(itr);
                   break;
             }
-            // MENSAGEM DE O ASSENTO NÃO É SEU
         }
     }
     else{

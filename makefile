@@ -10,13 +10,13 @@ INTERATIVO: interativo.cpp USER
 	g++ -c interativo.cpp -I src	
 
 USER: build/User.cpp src/User.h FLIGHTS
-	g++ -c buildE/User.cpp -I src
+	g++ -c build/User.cpp -I src
 
-FLIGHTS: build/FlightS.cpp src/FlightManager.h FLIGHT
-	g++ -c buildE/FlightManager.cpp -I src
+FLIGHTS: build/FlightManager.cpp src/FlightManager.h FLIGHT
+	g++ -c build/FlightManager.cpp -I src
 
 FLIGHT: build/Flight.cpp src/Flight.h
-	g++ -c buildE/Flight.cpp -I src
+	g++ -c build/Flight.cpp -I src
 
 CLEAN:
 	rm *.o

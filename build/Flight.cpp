@@ -92,7 +92,8 @@ void Flight::cancelSeat(int n){
 }
 
 void Flight::printFlight(){
-        std::cout << "Origem: " << origin.city << ", " << origin.country << std::endl
+        std::cout << "Código do Vôo: " << codigo_voo << std::endl
+                  << "Origem: " << origin.city << ", " << origin.country << std::endl
                   << "Destino: " << destination.city  << ", "      << destination.country << std::endl
                   << "Horario: " << hour.hour << ":"<< hour.minutes  << std::endl
                   << "preco: R$" << price << std::endl
@@ -108,5 +109,6 @@ void Flight::printseats(){
         for(int i=0;i<seats;i++){
                 std::cout << i+1 <<" : " << seat[i] << " | "; 
         }
+        std::cout << std::endl;
 
 }
