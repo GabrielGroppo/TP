@@ -1,13 +1,13 @@
 #include<iostream>
-#include "src/FlightManager.h"
-#include "src/Flight.h"
+#include "FlightManager.h"
+#include "Flight.h"
 #include<string>
 #include<vector>
 #include<fstream>
 
 FlightManager::FlightManager(){
     std::ifstream arquivo;
-        arquivo.open("Dados_Vôos/voos.txt");
+        arquivo.open("Dados_Vôos/Voos.txt");
             if(!arquivo.is_open()){
                 std::cerr << "Erro ao abrir o txt" << std::endl;
             }

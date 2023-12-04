@@ -1,8 +1,8 @@
 #include<iostream>
 #include <list>
-#include "src/FlightManager.h"
-#include "src/Flight.h"
-#include "src/User.h"
+#include "FlightManager.h"
+#include "Flight.h"
+#include "User.h"
 #include<vector>
     using namespace std;
 

@@ -25,9 +25,8 @@ class user{
         string name;
         string email;
         string password;
-        int cpf;
-        int credit_card;
-        int credit_card_debit;
+        long int cpf;
+        long int credit_card;
         std::list<ticket> tickets_;
 
 };

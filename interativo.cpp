@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "src/FlightS.h"
+#include "src/FlightManager.h"
 #include "src/Flight.h"
 #include "src/User.h"
 
@@ -40,7 +40,7 @@ void displayProfileMenu() {
 }
 
 int main() {
-    Flights Sistema;
+    FlightManager Sistema;
     user usuario;
 
     int choice = -1; // Inicializando com um valor diferente de 0
