@@ -33,7 +33,8 @@ void displayProfileMenu() {
     cout << "-> 7. Alterar senha" << endl;
     cout << "-> 8. Adicionar número de cartão de crédito" << endl;
     cout << "-> 9. Visualizar tickets" << endl;
-    cout << "-> 10. Cancelar ticket" << endl;
+    cout << "-> 10. Comprar ticket" << endl;
+    cout << "-> 11. Cancelar ticket" << endl;
     cout << "-> 0. Voltar ao menu principal" << endl;
     cout << "Escolha uma opção: ";
 }
@@ -50,119 +51,135 @@ int main() {
         int profileChoice = -1;
 
         switch (choice) {
-            case 1:
-                Sistema.showFlights();
-                break;
-
+                case 1:{
+                    Sistema.showFlights();
+                    break;
+                }
                 case 2: {
-                
-                while (profileChoice != 0) {
-                    displayProfileMenu();
-                    cin >> profileChoice;
-                    cout << endl;
+                    
+                    while (profileChoice != 0) {
+                        displayProfileMenu();
+                        cin >> profileChoice;
+                        cout << endl;
 
-                    switch (profileChoice) {
-                        case 1: {
-                            string name;
-                            cout << "Digite o nome: ";
-                            cin >> name;
-                            usuario.addName(name);
-                       
-                            break;
-                        }
-                        case 2: {
-                            string name;
-                            cout << "Digite um novo nome: ";
-                            cin >> name;
-                            usuario.changeName(name);
-                            break;
-                        }
-                        case 3: {
-                            long int cpf;
-                            cout << "Adicione o CPF: ";
-                            cin >> cpf;
-                            usuario.addCpf(cpf);
-                            break;
-                        }
-                        case 4: {
-                            string email;
-                            cout << "Digite o e-mail: ";
-                            cin >> email;
-                            usuario.addEmail(email);
-                            break;
-                        }
-                        case 5:{
-                            string email;
-                            cout << "Digite um novo e-mail: ";
-                            cin >> email;
-                            usuario.addEmail(email);
-                            break;
-                        }
-                        case 6:{
-                            string password;
-                            cout << "Digite sua senha: ";
-                            cin >> password;
-                            usuario.addPassword(password);
-                            break;
-                        }
-                        case 7:{
-                            string new_password;
-                            string old_password;
-                            cout << "Digite sua antiga senha: ";
-                            cin >> old_password;
-                            cout << "Digite a nova senha: ";
-                            cin >> new_password;
-                            usuario.changePassword(old_password , new_password);
-                            break;
-                        }
-                        case 8:{
-                            int cc;
-                            cout << "Digite o número do cartão de crétido: ";
-                            cin >> cc;
-                            usuario.addCredit_Card(cc);
-                            break;
-                        } 
-                        case 9:{
-                            usuario.checkTickets();
-                            break;
-                        }
+                        switch (profileChoice) {
+                            case 1: {
+                                string name;
+                                cout << "Digite o nome: ";
+                                cin >> name;
+                                usuario.addName(name);
                         
-                       case 10:{
-                            int code;
-                            cout << "Digite o código do vôo desejado: ";
-                            cin >> code;
-                                if(code < 1 || code > 50){
-                                    cout << "Esse vôo não existe!" << endl;
-                                }
-                                else{
-                                    Flight aux = Sistema.returnFlight(code);
-                                        aux.printseats();
-                                            cout << "Escolha seu assento: ";
-                                            int seat;
-                                            cin >> seat;
-                                                usuario.buyTicket(code, seat, Sistema);    
-                                }
-                            break;
-                       }
-
-                        case 0:
-                            cout << "Voltando ao menu principal." << endl;
-                            break;
-                        default:
-                            cout << "Opção inválida. Tente novamente." << endl;
+                                break;
+                            }
+                            case 2: {
+                                string name;
+                                cout << "Digite um novo nome: ";
+                                cin >> name;
+                                usuario.changeName(name);
+                                break;
+                            }
+                            case 3: {
+                                long int cpf;
+                                cout << "Adicione o CPF: ";
+                                cin >> cpf;
+                                usuario.addCpf(cpf);
+                                break;
+                            }
+                            case 4: {
+                                string email;
+                                cout << "Digite o e-mail: ";
+                                cin >> email;
+                                usuario.addEmail(email);
+                                break;
+                            }
+                            case 5:{
+                                string email;
+                                cout << "Digite um novo e-mail: ";
+                                cin >> email;
+                                usuario.addEmail(email);
+                                break;
+                            }
+                            case 6:{
+                                string password;
+                                cout << "Digite sua senha: ";
+                                cin >> password;
+                                usuario.addPassword(password);
+                                break;
+                            }
+                            case 7:{
+                                string new_password;
+                                string old_password;
+                                cout << "Digite sua antiga senha: ";
+                                cin >> old_password;
+                                cout << "Digite a nova senha: ";
+                                cin >> new_password;
+                                usuario.changePassword(old_password , new_password);
+                                break;
+                            }
+                            case 8:{
+                                int cc;
+                                cout << "Digite o número do cartão de crétido: ";
+                                cin >> cc;
+                                usuario.addCredit_Card(cc);
+                                break;
+                            } 
+                            case 9:{
+                                usuario.checkTickets();
+                                break;
+                            }
+                            
+                            case 10:{
+                                int code;
+                                cout << "Digite o código do vôo desejado: ";
+                                cin >> code;
+                                    if(code < 1 || code > 50){
+                                        cout << "Esse vôo não existe!" << endl;
+                                    }
+                                    else{
+                                        Flight aux = Sistema.returnFlight(code);
+                                            aux.printseats();
+                                                cout << "Escolha seu assento: ";
+                                                int seat;
+                                                cin >> seat;
+                                                    usuario.buyTicket(code, seat, Sistema);
+                                                cout << "Compra realizada com sucesso!" << endl;    
+                                    }
+                                break;
+                            }
+                            case 11:{
+                                int code;
+                                cout << "Digite o código do vôo que deseje cancelar: ";
+                                cin >> code;
+                                    if(usuario.verificar_Ticket(code) == 1){
+                                        ticket aux = usuario.return_ticket(code);
+                                        usuario.cancelTicket(code, aux.seat, Sistema);
+                                        cout << "Passagem cancelada" << endl;
+                                    } 
+                                    else{
+                                        cout << "Você não possui passagens para esse vôo!";
+                                    }                       
+                                break;
+                            }
+                            case 0:
+                                cout << "Voltando ao menu principal." << endl;
+                                break;
+                            default:
+                                cout << "Opção inválida. Tente novamente." << endl;
+                        }
                     }
+                    break;
                 }
-                break;
-            }
-        case 0:{
-                cout << "Saindo do programa. Obrigado!" << endl;
-                return 0;
+                case 0:{
+                        cout << "Saindo do programa. Obrigado!" << endl;
+                        return 0;
                 }
-        default:{
-                cout << "Opção inválida. Tente novamente." << endl;
-          }
+                default:{
+                        cout << "Opção inválida. Tente novamente." << endl;
+                }
         }
-      }
-        return 0;
     }
+
+
+    return 0;
+}
     

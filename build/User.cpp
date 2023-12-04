@@ -115,20 +115,47 @@ void user::checkTickets (){
   }  
 }
 
+ticket user::return_ticket(int codigo){
+  ticket aux;
+    for(auto itr = tickets_.begin(); itr != tickets_.end(); itr++){
+      if(codigo == itr->voo){
+        aux = (*itr);
+      }
+      else{
+        continue;
+      }
+    }
+ return aux;
+}
+
+bool user::verificar_Ticket(int codigo){
+  bool aux = 0;
+    for(auto itr = tickets_.begin(); itr != tickets_.end(); itr++){
+      if(codigo == itr->voo){
+        aux = 1;
+        return aux;
+      }
+      else{
+        continue;
+      }
+    }
+    return aux;
+}
+
 void user::cancelTicket(int codigo_voo, int seat, FlightManager& System){
     Flight &aux =System.returnFlight(codigo_voo);
-    if(aux.seatCheck(seat)){
-        for(auto itr = tickets_.begin(); itr != tickets_.end(); itr++){
-            if(itr->seat == aux.seatCheck(seat)){
-                aux.cancelSeat(seat);
-                  tickets_.erase(itr);
-                  break;
-            }
-        }
-    }
-    else{
-        std::cout<<"assento desocupado"<<endl;
-    } 
+      if(aux.seatCheck(seat)){
+          for(auto itr = tickets_.begin(); itr != tickets_.end(); itr++){
+              if(itr->seat == aux.seatCheck(seat)){
+                  aux.cancelSeat(seat);
+                    tickets_.erase(itr);
+                    break;
+              }
+          }
+      }
+      else{
+          std::cout<<"assento desocupado"<<endl;
+      } 
 }
 
 void user::buyTicket(int codigo_voo, int seat, FlightManager& System){

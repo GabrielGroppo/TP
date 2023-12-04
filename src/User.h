@@ -20,6 +20,8 @@ class user{
         void addCredit_Card(int cc);
         void checkTickets ();// mostra todos os tickets que o usuario possui do mais proximo do voo ao mais distante
         void cancelTicket (int codigo_voo, int seat, FlightManager& System);
+        ticket return_ticket(int codigo_voo);
+        bool verificar_Ticket(int codigo_voo);
         void buyTicket(int codigo_voo, int seat, FlightManager& System);
     private:
         string name;
