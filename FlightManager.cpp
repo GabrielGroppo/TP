@@ -1,13 +1,13 @@
 #include<iostream>
-#include "src/FlightManager.h"
-#include "src/Flight.h"
+#include "FlightManager.h"
+#include "Flight.h"
 #include<string>
 #include<vector>
 #include<fstream>
 
 FlightManager::FlightManager(){
     std::ifstream arquivo;
-        arquivo.open("Dados_Vôos/voos.txt");
+        arquivo.open("voos.txt");
             if(!arquivo.is_open()){
                 std::cerr << "Erro ao abrir o txt" << std::endl;
             }
@@ -89,4 +89,8 @@ Flight& FlightManager::returnFlight(int codigo){
         }
     }
     return flights_[codigo];
+}
+
+int FlightManager::manyFlights(){
+    return flights_.size();
 }

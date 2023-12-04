@@ -1,4 +1,4 @@
-#include"src/Flight.h"
+#include"Flight.h"
 #include<iostream>
 #include<string>
 #include<vector>
@@ -109,4 +109,8 @@ void Flight::printseats(){
                 std::cout << i+1 <<" : " << seat[i] << " | "; 
         }
 
+}
+
+int Flight::flightSize(){
+    return seat.size();
 }

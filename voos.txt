@@ -1,0 +1,18 @@
+01
+Nova_York EUA
+Londres Reino_Unido
+08 00
+600
+10
+02
+Los_Angeles EUA
+Tóquio Japão
+14 30
+800
+10
+03
+Paris França
+Sydney Austrália
+11 15
+900
+10

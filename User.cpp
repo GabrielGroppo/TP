@@ -1,8 +1,9 @@
 #include<iostream>
-#include <list>
-#include "src/FlightManager.h"
-#include "src/Flight.h"
-#include "src/User.h"
+#include<list>
+#include<utility>
+#include "FlightManager.h"
+#include "Flight.h"
+#include "User.h"
 #include<vector>
     using namespace std;
 
@@ -13,6 +14,15 @@ user::user(){
     cpf_ = 0;
     credit_card = 0;
     tickets_;
+}
+
+void user::perfil(){
+  cout << "Perfil " << endl
+       << "Nome: " << name_ << endl
+       << "CPF: " << cpf_ << endl
+       << "Email: " << email_ << endl
+       << "Senha: " << password_ << endl
+       << "Cartão de Credito: " << credit_card << endl;
 }
 
 void user::addName (string name){
@@ -132,5 +142,36 @@ void user::buyTicket(int codigo_voo, int seat, FlightManager& System){
           std::cout<<"assento ocupado"<<endl;
       }
 }
+
+bool user::checkName(string name){
+    return name_==name;
+}
+bool user::checkPassword(string password){
+    return password_==password;
+}
+bool user::checkCpf(int cpf){
+    return cpf_==cpf;
+}
+profile user::ReturnProfile(){
+    profile user;
+    user.name=name_;
+    user.email=email_;
+    user.password=password_;
+    user.cpf=cpf_;
+    user.credit_card=credit_card;
+    for(auto it=tickets_.begin();it!=tickets_.end();it++){
+        pair<int,int> aux (it->voo,it->seat);
+        user.flight_info.push_back(aux);
+    }
+    return user;
+}
+
+
+
+
+
+
+
+
 
 
