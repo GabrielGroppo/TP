@@ -15,7 +15,7 @@ void displayMenu() {
     cout << "  Aproveite nossas ofertas de passagens aéreas e programe toda a sua viagem com a X. Aqui você vai encontrar diversas opções de voos para diversos lugares e com as melhores companhias aéreas nacionais e internacionais. Consulte todas as disponibilidades e realize sua compra de maneira fácil, rápida e sem precisar sair de casa, 100% online. Além das melhores tarifas, na X você encontra dicas para deixar sua viagem ainda mais completa. Não perca tempo, reserve agora mesmo sua passagem e embarque nessa nova aventura. Reserve suas passagens no maior e melhor sistema de reservas de passagens! Planejar sua próxima viagem nunca foi tão fácil!" << endl << endl;
   
     cout << "-> 1. Visualizar voos disponíveis" << endl;
-    cout << "-> 2. Perfil do usuário" << endl;
+    cout << "-> 2. Login/Cadastro" << endl;
     cout << "-> 0. Sair" << endl;
     cout << "Escolha uma opção: ";
 }
@@ -34,6 +34,7 @@ void displayProfileMenu() {
     cout << "-> 8. Adicionar número de cartão de crédito" << endl;
     cout << "-> 9. Visualizar tickets" << endl;
     cout << "-> 10. Cancelar ticket" << endl;
+    cout << "-> 11. Visualizar seu perfil" << endl;
     cout << "-> 0. Voltar ao menu principal" << endl;
     cout << "Escolha uma opção: ";
 }
@@ -55,7 +56,14 @@ int main() {
                 break;
 
                 case 2: {
-                
+                    bool login_choice = 0;
+                    cin >> login_choice;
+                        if(login_choice == 1){   //LOGIN
+                            
+                        }
+                        else{   //CADASTRO
+
+                        }
                 while (profileChoice != 0) {
                     displayProfileMenu();
                     cin >> profileChoice;
@@ -78,7 +86,7 @@ int main() {
                             break;
                         }
                         case 3: {
-                            int cpf;
+                            long int cpf;
                             cout << "Adicione o CPF: ";
                             cin >> cpf;
                             usuario.addCpf(cpf);
@@ -129,6 +137,10 @@ int main() {
                        //case 10:{
                         //}
 
+                        case 11:{
+                            usuario.perfil();
+                            break;
+                        }
                         case 0:
                             cout << "Voltando ao menu principal." << endl;
                             break;

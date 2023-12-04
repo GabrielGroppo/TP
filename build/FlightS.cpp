@@ -1,6 +1,6 @@
 #include<iostream>
-#include "src/FlightS.h"
-#include "src/Flight.h"
+#include "FlightS.h"
+#include "Flight.h"
 #include<string>
 #include<vector>
 #include<fstream>

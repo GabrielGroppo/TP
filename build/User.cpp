@@ -1,8 +1,8 @@
 #include<iostream>
 #include <list>
-#include "src/FlightS.h"
-#include "src/Flight.h"
-#include "src/User.h"
+#include "FlightS.h"
+#include "Flight.h"
+#include "User.h"
 #include<vector>
     using namespace std;
 
@@ -12,7 +12,6 @@ user::user(){
     password_ = "";
     cpf_ = 0;
     credit_card = 0;
-    credit_card_debit = 0;
     tickets_;
 }
 
@@ -46,17 +45,17 @@ void user::changeName(string name){
 void user::addCpf(long int cpf){
    if(cpf_ == 0 ){
    cpf_ = cpf;
-  }
-  else{
- cout <<" Já existe um cpf para esse usuário!" << endl;
-  }
+   }
+   else{
+  cout <<" Já existe um cpf para esse usuário!" << endl;
+   }
 }
 void user::addEmail(string email){
-   if(email_.empty()){
+  if(email_.empty()){
     email_ = email;
   }
   else{
- cout <<" Já existe um email para esse usuário!" << endl;
+    cout <<" Já existe um email para esse usuário!" << endl;
   }
 }
 void user::changeEmail(string email){
@@ -100,6 +99,10 @@ void user:: addCredit_Card(int cc){
 }
 
 void user::checkTickets (){
+  if(tickets_.empty()== true){
+    std::cout << "Você não possui tickets!" << std::endl << std::endl;
+  }
+  else{
     for(auto it=tickets_.begin();it!=tickets_.end();it++){
         std::cout<<"Passagem:" << endl
                  <<"Codigo do voo: "<<(*it).voo<< endl
@@ -108,6 +111,7 @@ void user::checkTickets (){
                  <<"Horario: "<<(*it).hour.hour<<":"<<(*it).hour.minutes << endl
                  <<"Assento: "<<(*it).seat <<"  Preço: $"<<(*it).price<<",00"<< endl;
     }
+  }  
 }
 
 void user::cancelTicket(int codigo_voo, int seat, Flights& System){
