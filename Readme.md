@@ -56,7 +56,8 @@ A classe User é essencial para a representação e gerenciamento dos passageiro
 	-checkTickets():Exibe informações sobre cada bilhete disponível, como código do voo, origem, destino, horário, assento e preço.
 	-cancelTicket (string flight, int hour, int minutes, int seat): Permite que um usuário cancele um bilhete para um voo. Verifica se o assento especificado está reservado pelo usuário e, se for o caso, remove o bilhete da lista de bilhetes do usuário. Caso contrário retorna "assento ocupado".
 	-buyTicket (string origin, string destination, int hour, int min, int seat): Permite que um usuário compre um bilhete para um voo. Ele verifica se o assento desejado está disponível no voo especificado e, se estiver disponível, adiciona o bilhete à lista de bilhetes do usuário.Caso contrário retorna "assento ocupado".
-
+	-return_ticket (int codigo_voo) : Retorna um ticket de um voo para auxiliar no cancelamento das passagens para o usuário.
+	-verificar_ticket(int codigo_voo): verifica se um usuario possui a passagem no momento de cancelar passagens.
 
 •Classe Flight:
 A classe Flight é crucial para o gerenciamento de informações relacionadas aos voos disponíveis e às reservas de passagens. A classe é importante porque também representa a situação de cada voo detalhadamente. Ela desempenha um papel central no sistema de reservas, permitindo que os usuários visualizem voos disponíveis, reservem assentos e efetuem compras. Isso torna a classe Flight essencial para o funcionamento do programa de reservas de passagens aéreas.
