@@ -15,7 +15,7 @@ class UserManager{
         void UpdatePassenger();
         bool validName(std::string name);
         //bool validCpf(long int cpf);
-        bool validPasword(std::string name,std::string password);
+        bool validPassword(std::string name,std::string password);
     private:
         std::vector<user> users_;
         

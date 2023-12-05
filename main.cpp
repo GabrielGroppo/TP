@@ -42,6 +42,7 @@ int main() {
     //user *usuario;
 
     int choice = -1; // Inicializando com um valor diferente de 0
+    bool check=true;
     while (choice != 0) {
         displayMenu();
         cin >> choice;
@@ -55,62 +56,56 @@ int main() {
 
                 case 2: {
                     user starter;
-                    user *usuario=&starter;
+                    user *usuario = &starter;
                     bool login_choice = false;
                     cout << "escolha se quer logar(1) ou cadastrar uma nova conta(0):";
                     cin >> login_choice;
                     cout << endl;
                         if(login_choice){   //LOGIN
-                        bool check=true;
-                        while(1){
-                            string name;
-                            cout << "Digite o nome do usuario: ";
-                            cin >> name;
-                            cout << endl;
-                            if(SistemadeUsuario.validName(name)){
-                                 cout <<"insira nome valido"<< endl;
-                                continue;
+                            check=true;
+                            while(1){
+                                string name;
+                                cout << "Para voltar digite : 0" << endl;
+                                cout << "Digite o nome do usuario: ";
+                                cin >> name;
+                                    if(name == "0"){
+                                        check =false;
+                                        break;
+                                    }
+                                cout << endl;
+                                    if(SistemadeUsuario.validName(name)){
+                                        cout <<"insira nome valido"<< endl;
+                                        continue;
+                                    }
+                                string password;
+                                cout << "Digite sua senha: ";
+                                cin >> password;
+                                cout << endl;
+                                    if(!SistemadeUsuario.validPassword(name,password)){
+                                        cout <<"Senha incorreta"<< endl;
+                                        continue;
+                                    }
+                                usuario=&SistemadeUsuario.returnUser(name,password);
+                                break;
                             }
-                            string password;
-                            cout << "Digite sua senha: ";
-                            cin >> password;
-                            cout << endl;
-                            if(!SistemadeUsuario.validPasword(name,password)){
-                                 cout <<"insira senha incorreta"<< endl;
-                                continue;
-                            }
-                            usuario=&SistemadeUsuario.returnUser(name,password);
-                            break;
-                          }
                         }
                         else{   //CADASTRO
-                        cout<< "por favor insira os dados requisitados"<<endl;
-                        bool check=true;
-                        string name;
-                        while(1){
-                            cout << "Digite o nome: ";
-                            cin >> name;
-                            cout << endl;
-                            if(SistemadeUsuario.validName(name)){
-                               usuario->addName(name);
-                               break;
-                            }else{
-                                cout << "Nome de usuario invalido" << endl;
+                            cout<< "por favor insira os dados requisitados"<<endl;
+                                check=true;
+                                string name;
+                            while(1){
+                                
+                                cout << "Digite o nome: ";
+                                std::cin >> name;
+                                cout << endl;
+                                    if(SistemadeUsuario.validName(name)){
+                                    usuario->addName(name);
+                                    break;
+                                    }else{
+                                        cout << "Nome de usuario invalido" << endl;
+                                    }
                             }
-                        }
-                        /*while(1){
                             long int cpf;
-                            cout << "Adicione o CPF: ";
-                            cin >> cpf;
-                            cout << endl;
-                            if(SistemadeUsuario.validCpf(cpf)){
-                               usuario->addCpf(cpf);
-                               break;
-                            }else{
-                                cout << "cpf invalido" << endl;
-                            }
-                        }*/
-                            int cpf;
                             cout << "Adicione o CPF: ";
                             cin >> cpf;
                             cout << endl;
@@ -133,16 +128,17 @@ int main() {
                             cin >> cc;
                             cout << endl;
                             usuario->addCredit_Card(cc);
-                        SistemadeUsuario.addUser(*usuario);
-                        usuario=&SistemadeUsuario.returnUser(name,password);
-                        
+                            SistemadeUsuario.addUser(*usuario);
+                            usuario=&SistemadeUsuario.returnUser(name,password);
+                            
                         }
-                while (profileChoice != 0) {
+                while (profileChoice != 0 && check) {
                     displayProfileMenuUsing();
                     cin >> profileChoice;
                     cout << endl;
 
                     switch (profileChoice) {
+
                         case 1: {
                             string name;
                             cout << "Digite um novo nome: ";
@@ -151,6 +147,7 @@ int main() {
                             cout<<endl<<endl;
                             break;
                         }
+
                         case 2:{
                             string email;
                             cout << "Digite um novo e-mail: ";
@@ -159,6 +156,7 @@ int main() {
                             cout<<endl<<endl;
                             break;
                         }
+
                         case 3:{
                             string new_password;
                             string old_password;
@@ -170,11 +168,13 @@ int main() {
                             cout<<endl<<endl;
                             break;
                         }
+
                         case 4:{
                             usuario->checkTickets();
                             cout<<endl<<endl;
                             break;
                         }
+
                         case 5:{
                             Sistema.showFlights();
                             int codigo;
@@ -183,12 +183,12 @@ int main() {
                             cin>>codigo;
                             cout<<endl;
                             if(codigo>=1&&codigo<=Sistema.manyFlights()){
-                                Flight &flightaux=Sistema.returnFlight(codigo);
+                                Flight &flightaux = Sistema.returnFlight(codigo);
                                 flightaux.printseats();
                                 cout<<"selecione um assento pelo número:";
                                 cin>>assento;
                                 cout<<endl;
-                                if(assento>=1&&codigo<=flightaux.flightSize()&&!flightaux.seatCheck(assento)){
+                                if(assento>=1 && assento<=flightaux.flightSize() && !flightaux.seatCheck(assento)){
                                     usuario->buyTicket(codigo,assento,Sistema);
                                 }else{
                                     cout<<"insira um assento valido, retornando ao sistema do perfil"<<endl;
@@ -199,7 +199,8 @@ int main() {
                             }
                             cout<<endl<<endl;
                             break;
-                        }                        
+                        }
+
                         case 6:{
                             usuario->checkTickets();
                             int codigo;
@@ -207,16 +208,16 @@ int main() {
                             cout<<"selecione o voo que quer cancelar pelo codigo:";
                             cin>>codigo;
                             cout<<endl;
-                            if(codigo>=1&&codigo<=Sistema.manyFlights()){
-                                Flight &flightaux=Sistema.returnFlight(codigo);
-                                cout<<"selecione um assento pelo número:";
-                                cin>>assento;
-                                cout<<endl;
-                                if(assento>=1&&codigo<=flightaux.flightSize()&&flightaux.seatCheck(assento)){
-                                    usuario->cancelTicket(codigo,assento,Sistema);
-                                }else{
-                                    cout<<"insira um assento valido, retornando ao sistema do perfil"<<endl;
-                                }
+                                if(codigo>=1&&codigo<=Sistema.manyFlights()){
+                                    Flight &flightaux=Sistema.returnFlight(codigo);
+                                    cout<<"selecione um assento pelo número:";
+                                    cin>>assento;
+                                    cout<<endl;
+                                    if(assento>=1&&codigo<=flightaux.flightSize()&&flightaux.seatCheck(assento)){
+                                        usuario->cancelTicket(codigo,assento,Sistema);
+                                    }else{
+                                        cout<<"insira um assento valido, retornando ao sistema do perfil"<<endl;
+                                    }
                                
                             }else{
                                cout<<"insira um codigo de voo valido, retornando ao sistema do perfil"<<endl; 

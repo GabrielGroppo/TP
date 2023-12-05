@@ -81,7 +81,7 @@ user& UserManager::returnUser(std::string name, std::string password){
 }
 void UserManager::UpdatePassenger(){
     std::ofstream arquivo;
-    arquivo.open("Passengers.txt");
+    arquivo.open("Data/Passengers.txt");
          for(int i=0;i<users_.size();i++){
             profile copy=users_[i].ReturnProfile();
             arquivo<<copy.name<<endl;
@@ -104,15 +104,8 @@ bool UserManager::validName(std::string name){
     }
     return true;
 }
-/*bool UserManager::validCpf(long int cpf){
-    for(int i=0;i<users_.size();i++){
-        if(users_[i].checkCpf(cpf)){
-            return false;
-        }
-    }
-    return true;
-}*/
-bool UserManager::validPasword(std::string name,std::string password){
+
+bool UserManager::validPassword(std::string name,std::string password){
     for(int i=0;i<users_.size();i++){
         if(users_[i].checkName(name)){
             if(users_[i].checkPassword(password)){

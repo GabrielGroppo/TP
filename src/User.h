@@ -37,7 +37,7 @@ class user{
         
         bool checkName(string name);
         bool checkPassword(string password);
-        bool checkCpf(int cpf);
+        bool checkCpf(long int cpf);
         profile ReturnProfile();
         
     private:

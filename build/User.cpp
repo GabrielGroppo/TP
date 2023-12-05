@@ -38,7 +38,7 @@ void user::changeName(string name){
   cout <<" Não existe nenhum nome de usuário!" << endl;
   }
  else{
-   name = name;
+   name_ = name;
      cout <<"Nome de usuário alterado!" << endl;
      }
 }
@@ -149,7 +149,7 @@ bool user::checkName(string name){
 bool user::checkPassword(string password){
     return password_== password;
 }
-bool user::checkCpf(int cpf){
+bool user::checkCpf(long int cpf){
     return cpf_== cpf;
 }
 profile user::ReturnProfile(){

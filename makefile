@@ -1,10 +1,10 @@
 ALL: COMPILAR
 
-EXECUTAR: 
+EXECUTAR: COMPILAR
 	./main
 
 COMPILAR: USER FLIGHTS FLIGHT MAIN USER_MANAGER
-	g++ Flight.o FlightManager.o User.o main.o UserManager.o -o main 
+	g++ Flight.o FlightManager.o User.o main.o UserManager.o -o main -g
 
 MAIN: main.cpp USER USER_MANAGER FLIGHT FLIGHTS
 	g++ -c main.cpp -I src

@@ -64,7 +64,7 @@ double Flight::returnPrice(){
 
 void Flight::getSeat(int n){
     if(n > 0){
-        if(n < seats){
+        if(n <= seats){
                 if(seat[n-1]== 0){
                 seat[n-1] = 1;
                 }
@@ -92,7 +92,8 @@ void Flight::cancelSeat(int n){
 }
 
 void Flight::printFlight(){
-        std::cout << "Origem: " << origin.city << ", " << origin.country << std::endl
+        std::cout << "Código do Vôo: " << codigo_voo << std::endl
+                  << "Origem: " << origin.city << ", " << origin.country << std::endl
                   << "Destino: " << destination.city  << ", "      << destination.country << std::endl
                   << "Horario: " << hour.hour << ":"<< hour.minutes  << std::endl
                   << "preco: R$" << price << std::endl
@@ -105,8 +106,29 @@ void Flight::printseats(){
    std::cout << " 0 : Disponivel" << std::endl
              << " 1 : Ocupado" << std::endl;
 
+        int aux = 0;
+
         for(int i=0;i<seats;i++){
-                std::cout << i+1 <<" : " << seat[i] << " | "; 
+
+                if(i+1<100){
+                        if(i+1<10){
+                            std::cout <<"  "; 
+                        }else{
+                            std::cout <<' ';    
+                        }
+                }
+                std::cout << i+1 <<" : " << seat[i] << " | ";
+                aux++;
+                if(aux == 3){
+                        std::cout << "    ";
+                }
+                else if(aux == 7){
+                        std::cout << "    ";
+                }
+                else if(aux == 10){
+                        aux = 0;
+                        std::cout << std::endl;
+                }
         }
 
 }
