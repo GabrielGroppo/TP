@@ -8,33 +8,33 @@
     using namespace std;
 
 user::user(){
-    name = "";
-    email = "";
-    password = "";
-    cpf = 0;
+    name_ = "";
+    email_ = "";
+    password_ = "";
+    cpf_ = 0;
     credit_card = 0;
     tickets_;
 }
 
 void user::perfil(){
   cout << "Perfil " << endl
-       << "Nome: " << name << endl
-       << "CPF: " << cpf << endl
-       << "Email: " << email << endl
-       << "Senha: " << password << endl
+       << "Nome: " << name_ << endl
+       << "CPF: " << cpf_ << endl
+       << "Email: " << email_ << endl
+       << "Senha: " << password_ << endl
        << "Cartão de Credito: " << credit_card << endl;
 }
 
 void user::addName (string name){
-  if(name.empty()){
-    name = name;
+  if(name_.empty()){
+    name_ = name;
   }
   else{
  cout <<" Já existe um nome de usuário!" << endl;
   }
 }
 void user::changeName(string name){
- if(name.empty()){
+ if(name_.empty()){
   cout <<" Não existe nenhum nome de usuário!" << endl;
   }
  else{
@@ -44,45 +44,45 @@ void user::changeName(string name){
 }
 
 void user::addCpf(long int cpf){
-   if(cpf == 0 ){
-   cpf = cpf;
+   if(cpf_ == 0 ){
+   cpf_ = cpf;
   }
   else{
  cout <<" Já existe um cpf para esse usuário!" << endl;
   }
 }
 void user::addEmail(string email){
-   if(email.empty()){
-    email = email;
+   if(email_.empty()){
+    email_ = email;
   }
   else{
  cout <<" Já existe um email para esse usuário!" << endl;
   }
 }
 void user::changeEmail(string email){
-   if(email.empty()){
+   if(email_.empty()){
   cout <<" Não existe nenhum email para esse usuário!" << endl;
   }
  else{
-  email = email;
+  email_ = email;
   cout <<"Email foi alterado!" << endl;
      }
 }
 void user::addPassword(string password){
-  if(password.empty()){
-    password = password;
+  if(password_.empty()){
+    password_ = password;
   }
   else{
  cout <<" Já existe uma senha para esse usuário!" << endl;
   }
 }
 void user::changePassword(string old_password,string new_password){
-  if(password.empty()){
+  if(password_.empty()){
   cout <<" Não existe nenhuma senha para esse usuário!" << endl;
   }
  else{
-  if(password == old_password){
-      password = new_password;
+  if(password_ == old_password){
+      password_ = new_password;
   cout <<"Senha foi alterada!" << endl;
      }
      else{
@@ -144,21 +144,21 @@ void user::buyTicket(int codigo_voo, int seat, FlightManager& System){
 }
 
 bool user::checkName(string name){
-    return name_==name;
+    return name_ == name;
 }
 bool user::checkPassword(string password){
-    return password_==password;
+    return password_== password;
 }
 bool user::checkCpf(int cpf){
-    return cpf_==cpf;
+    return cpf_== cpf;
 }
 profile user::ReturnProfile(){
     profile user;
-    user.name=name_;
-    user.email=email_;
-    user.password=password_;
-    user.cpf=cpf_;
-    user.credit_card=credit_card;
+    user.name = name_;
+    user.email = email_;
+    user.password = password_;
+    user.cpf = cpf_;
+    user.credit_card = credit_card;
     for(auto it=tickets_.begin();it!=tickets_.end();it++){
         pair<int,int> aux (it->voo,it->seat);
         user.flight_info.push_back(aux);

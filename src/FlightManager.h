@@ -12,6 +12,7 @@ class FlightManager{
         void addFlight(Flight);
         void showFlights();
         Flight& returnFlight(int n);
+        int manyFlights();
     private:
         std::vector<Flight> flights_;
 };

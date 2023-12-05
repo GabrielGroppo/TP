@@ -53,6 +53,9 @@ class Flight{
         void cancelSeat(int n);
         void printFlight();
         void printseats();// interface primaria entre usuario e o voo
+        
+        int flightSize();
+        
 
 
 };
