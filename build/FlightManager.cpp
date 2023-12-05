@@ -7,7 +7,7 @@
 
 FlightManager::FlightManager(){
     std::ifstream arquivo;
-        arquivo.open("voos.txt");
+        arquivo.open("Data/voos.txt");
             if(!arquivo.is_open()){
                 std::cerr << "Erro ao abrir o txt" << std::endl;
             }

@@ -2,15 +2,15 @@
 #include<vector>
 #include<string>
 #include<fstream>
-#include "UserManager.h"
-#include "FlightManager.h"
-#include "Flight.h"
-#include "User.h"
+#include"UserManager.h"
+#include"FlightManager.h"
+#include"Flight.h"
+#include"User.h"
 using std::endl;
 
 UserManager::UserManager(FlightManager& System){
     std::ifstream arquivo;
-        arquivo.open("Passengers.txt",std::ios::app);
+        arquivo.open("Data/Passengers.txt",std::ios::app);
             if(!arquivo.is_open()){
                 std::cerr << "Erro ao abrir o txt" << std::endl;
             }
