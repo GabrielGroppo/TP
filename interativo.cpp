@@ -165,13 +165,13 @@ try{
                     }
                     catch ( int e){
      if (e == 1) {
-         cout << "Esse vôo não existe!" << endl;
+         cout << "---Esse vôo não existe!---" << endl << endl;
 }
     else if (e == 2 ){
-cout << "Você não possui passagens para esse vôo!" << endl;
+cout << "---Você não possui passagens para esse vôo!---" << endl << endl;
     }
     else if( e == 3){
-        cout << "Opção inválida. Tente novamente." << endl;
+        cout << "---Opção inválida. Tente novamente.---" << endl << endl;
     }
 }
                     }
@@ -189,7 +189,7 @@ cout << "Você não possui passagens para esse vôo!" << endl;
 
 catch ( int e){
 if( e == 3){
-        cout << "Opção inválida. Tente novamente." << endl;
+        cout << "---Opção inválida. Tente novamente.---" << endl << endl;
         }
     }
 }
