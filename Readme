@@ -76,12 +76,12 @@ A classe User é essencial para a representação e gerenciamento dos passageiro
 
     -checkCpf(long int cpf): função que compara um numero digitado pelo usuario com o cpf cadastrado por ele.  Se forem iguais retorna 1 caso contrario retorna 0.
 
-    profile ReturnProfile():
+    profile ReturnProfile(): retorna o profile do usuário como todos os dados do usuário e quais passagens no voos que possui em um vector de pair específico, utilizado em UpdatePassenger() para permitir atualização mais fácil.
 
     -perfil(): função que imprime todos os dados do perfil doo usuario, sendo eles o nome, cpf, email, senha e o cartão de crédito
 
 •Classe UserManager:
-/// DESCRIÇÃO DA CLASSE
+Classe que gerencia todos os usuários no sistema, armazenando todos os usuários e que atualiza o banco de dados(passenger.txt) para consolidar as modificações feitas para os usos futuros do software.
 
 •Atributos:
 
@@ -89,7 +89,7 @@ A classe User é essencial para a representação e gerenciamento dos passageiro
 
 •Métodos:
 
-	-UserManager(FlightManager& System):
+	-UserManager(FlightManager& System): o construtor da classe, ele pega os dados do passenger.txt e cria os usuários já estabelecidos, também modifica os FlightManager passado para estabelecer as passagens já compradas pelos usuários anteriores.
 
 	-addUser(user& passenger): adiciona usuarios no conjunto
 
@@ -170,6 +170,6 @@ A classe Flight é crucial para o gerenciamento de informações relacionadas ao
 
 	-showFlights(): mostra todos os voos disponiveis no conjunto
 
-	-retrunFlight(int n): Essa função aceita um código de voo como argumento e procura na lista de voos representada por flights_. Ela procura na lista de voos, verificando se o código do voo corresponde ao código fornecido.Se encontrar um voo com o código correspondente,retorna esse voo.
+	-returnFlight(int n): Essa função aceita um código de voo como argumento e procura na lista de voos representada por flights_. Ela procura na lista de voos, verificando se o código do voo corresponde ao código fornecido.Se encontrar um voo com o código correspondente,retorna esse voo.
 
 	-manyFlights(): retorna a quantidade de voos do conjunto
