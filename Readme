@@ -1,6 +1,8 @@
  TP: Sistema de Passagens aéreas
+
+
  • Descrição:
-	A criação de um site de reserva de passagens aéreas é um projeto que visa abordar uma necessidade crítica no setor de viagens e turismo. Com a crescente demanda por viagens aéreas em todo o mundo, a conveniência e a eficiência na reserva de passagens tornaram-se essenciais para viajantes e companhias aéreas. Este projeto busca resolver a complexidade e a inconveniência muitas vezes associadas ao processo de reserva de passagens aéreas. Assim sendo, X é um sistema de reserva de passagens aéreas que permite oferecer aos usuários a capacidade de pesquisar, selecionar e reservar voos para destinos diversos. Além disso, ele também possui funcionalidade de cadastro, login e edição do perfil dos usuários, o que promove facilidade para utilizações futuras. Seu principal objetivo é permitir que a execução de todas essas tarefas seja feita de forma eficaz e intuitiva. Por fim, a criação de um projeto de reserva de passagens aéreas é uma iniciativa que busca melhorar a experiência de viagem para os passageiros e fornecer um serviço eficiente e valioso, tendo o potencial de simplificar e aprimorar o processo de reserva de voos, tornando-o mais acessível e conveniente para todos os envolvidos.
+	A criação de um site de reserva de passagens aéreas é um projeto que visa abordar uma necessidade crítica no setor de viagens e turismo. Com a crescente demanda por viagens aéreas em todo o mundo, a conveniência e a eficiência na reserva de passagens tornaram-se essenciais para viajantes e companhias aéreas. Este projeto busca resolver a complexidade e a inconveniência muitas vezes associadas ao processo de reserva de passagens aéreas. Assim sendo, GoldFly é um sistema de reserva de passagens aéreas que permite oferecer aos usuários a capacidade de pesquisar, selecionar e reservar voos para destinos diversos. Além disso, ele também possui funcionalidade de cadastro, login e edição do perfil dos usuários, o que promove facilidade para utilizações futuras. Seu principal objetivo é permitir que a execução de todas essas tarefas seja feita de forma eficaz e intuitiva. Por fim, a criação de um projeto de reserva de passagens aéreas é uma iniciativa que busca melhorar a experiência de viagem para os passageiros e fornecer um serviço eficiente e valioso, tendo o potencial de simplificar e aprimorar o processo de reserva de voos, tornando-o mais acessível e conveniente para todos os envolvidos.
 
  •Requisitos do Projeto:
 	
@@ -45,18 +47,59 @@ A classe User é essencial para a representação e gerenciamento dos passageiro
 • Métodos:
 
 	-User():Este é o construtor da classe user. Ele inicializa as variáveis de membro da classe, com valores padrão.
+
 	-addName (string):  Permite que o usuário adicione um nome de usuário, desde que o nome atual esteja vazio. Se já existir um nome, exibe uma mensagem de erro.
+
  	-changeName (string): Permite que o usuário altere seu nome de usuário, desde que o nome atual não esteja vazio. Se não houver um nome de usuário definido, exibe uma mensagem de erro.
+
 	-addCpf (long int): Permite que o usuário adicione um número de CPF, desde que o CPF atual ainda nãoesteja definido . Se já existir um CPF, exibe uma mensagem de erro.
+
 	-addEmail(string):  Permite que o usuário adicione um endereço de e-mail, desde que o endereço de e-mail atual esteja vazio. Se já houver um endereço de e-mail, exibe uma mensagem de erro.
+
  	changeEmail( string): permite que o usuário altere seu endereço de e-mail, desde que o endereço de e-mail atual não esteja vazio. Se não houver um endereço de e-mail definido, exibe uma mensagem de erro.
+
 	-addPassword (string): Esta função permite que o usuário adicione uma senha, desde que a senha atual esteja vazia. Se já existir uma senha, exibe uma mensagem de erro.
-	-changePassword (string), string): Permite que o usuário altere sua senha, desde que haja uma senha definida. Ela verifica se a senha atual coincide com a senha fornecida e, se coincidir, atualiza a senha. Caso contrário, exibe uma mensagem de erro.
+
+	-changePassword (string, string): Permite que o usuário altere sua senha, desde que haja uma senha definida. Ela verifica se a senha atual coincide com a senha fornecida e, se coincidir, atualiza a senha. Caso contrário, exibe uma mensagem de erro.
+
 	-add CreditCard (long int): Permite que o usuário adicione um número de cartão de crédito, desde que o número de cartão de crédito atual aida não esteja definido. Se já houver um número de cartão de crédito, exibe uma mensagem de erro.
+
 	-checkTickets():Exibe informações sobre cada bilhete disponível, como código do voo, origem, destino, horário, assento e preço.
+
 	-cancelTicket (string flight, int hour, int minutes, int seat): Permite que um usuário cancele um bilhete para um voo. Verifica se o assento especificado está reservado pelo usuário e, se for o caso, remove o bilhete da lista de bilhetes do usuário. Caso contrário retorna "assento ocupado".
+
 	-buyTicket (string origin, string destination, int hour, int min, int seat): Permite que um usuário compre um bilhete para um voo. Ele verifica se o assento desejado está disponível no voo especificado e, se estiver disponível, adiciona o bilhete à lista de bilhetes do usuário.Caso contrário retorna "assento ocupado".
 
+    -checkName(string name): função que compara uma string digitada pelo usuario com o nome adicionado do usuario para login. Caso sejam iguais retorna 1, caso contrario 0. Serve para verificar o usuario de login.
+
+    -checkPassword(string password): função que compara uma string inserida pelo usuario com a senha cadastrada por ele mesmo. Se forem iguais retorna 1 caso contrario retorna 0.
+
+    -checkCpf(long int cpf): função que compara um numero digitado pelo usuario com o cpf cadastrado por ele.  Se forem iguais retorna 1 caso contrario retorna 0.
+
+    profile ReturnProfile(): retorna o profile do usuário como todos os dados do usuário e quais passagens no voos que possui em um vector de pair específico, utilizado em UpdatePassenger() para permitir atualização mais fácil.
+
+    -perfil(): função que imprime todos os dados do perfil doo usuario, sendo eles o nome, cpf, email, senha e o cartão de crédito
+
+•Classe UserManager:
+Classe que gerencia todos os usuários no sistema, armazenando todos os usuários e que atualiza o banco de dados(passenger.txt) para consolidar as modificações feitas para os usos futuros do software.
+
+•Atributos:
+
+	- users(vector<user>): representa um conjunto de usuarios que podem entrar no sistema
+
+•Métodos:
+
+	-UserManager(FlightManager& System): o construtor da classe, ele pega os dados do passenger.txt e cria os usuários já estabelecidos, também modifica os FlightManager passado para estabelecer as passagens já compradas pelos usuários anteriores.
+
+	-addUser(user& passenger): adiciona usuarios no conjunto
+
+	-returnUser(string name, string password): retorna o usuario que possui o login name a senha password
+
+	-UpdatePassenger(): adiciona as informações dos usuarios e suas ações no sistema em um txt.
+
+	-validName(string name): verifica se a string recebida é o login de algum usuario do conjunto
+
+	-validPassword(string name, string password):verifica se a string recebida é a senha do login name recebido
 
 •Classe Flight:
 A classe Flight é crucial para o gerenciamento de informações relacionadas aos voos disponíveis e às reservas de passagens. A classe é importante porque também representa a situação de cada voo detalhadamente. Ela desempenha um papel central no sistema de reservas, permitindo que os usuários visualizem voos disponíveis, reservem assentos e efetuem compras. Isso torna a classe Flight essencial para o funcionamento do programa de reservas de passagens aéreas.
@@ -74,35 +117,59 @@ A classe Flight é crucial para o gerenciamento de informações relacionadas ao
 •Métodos:
 
 	-flight() (Construtor 1): Este é o construtor da classe Flight que inicializa todas as variáveis de membro com valores padrão
+
 	-flight() (Construtor 2): Este é um construtor sobrecarregado que permite criar um objeto Flight com valores específicos para todas as variáveis de membro. Ele inicializa os membros da classe com os valores fornecidos.
+
 	-addOriginCity (string ): Permite adicionar uma cidade de origem ao objeto Flight, desde que a cidade de origem atual esteja vazia.
+
  	-addOriginCountry (string): Permite adicionar um país de origem ao objeto Flight, desde que o país de origem atual esteja vazio.
+
+	-origin(): Retorna as informações de origem do voo.
+
 	-addDestinationCity (string ):Permite adicionar uma cidade de destino ao objeto Flight, desde que a cidade de destino atual esteja vazia.
+
 	-addDestinationCountry(string): Permite adicionar um país de destino ao objeto Flight, desde que a cidade de destino atual esteja vazia.
+
 	-addTimeHour (int ): Permite definir o horário de partida do voo.
+
  	-addTimeMinute (int): Permite definir os minutos de partida do voo, desde que não estejam já definidos.
+
+	-time(): Retorna o horário de partida do voo, desde que não estejam já definidos.
+
 	-addPrice (double): Define o preço da passagem para o voo, desde que o preço atual esteja 0.
+
 	-addSeat (int q): Adiciona um assento específico em relação ao usuário, desde que a quantidade atual de assentos seja 0. Também inicializa um vetor de assentos com os valores padrão.
+
 	-seatCheck(int n, std::string name): Verifica se um assento específico está ocupado por um usuário com o nome especificado.
+
+    -flightCheck(int codigo): Verifica se o código do voo corresponde ao código especificado.
+
 	-returnPrice(): Retorna o preço do voo.
+
 	-getSeat(int n, string): Permite a um usuário reservar um assento, desde que o assento esteja disponível.
+	
 	-cancelSeat(int n, string): Permite a um usuário cancelar a reserva de um assento, desde que o assento esteja ocupado pelo usuário especificado.
+
 	-printseats():Retorna um vetor de inteiros que representa os assentos disponíveis no voo.
-	-printflight():Imprime no terminal as informações do voo como sua origem e destino, horário, código do voo, quantos assentos ele possui e preço de sua 
-passagem.
-	-int code(): retorna o código do voo em questão.
-	- addflightcode(): define o código de voo. 
-	-getticket(int): retorna um objeto ticket que contém as informações do voo e o assento referido aquele ticket.
- 
-•Classe Flights: 
+
+	-flightSize(): retorna o tamanho do vetor seat, representando o numero de acentos em um voo
+
+•Classe FlightManager: 
 
 •Atributos:
 
 	-flights_ (vector<Flight>): Armazena um vetor de objetos Flight para representar uma coleção de voos.
  
 •Métodos:
+	
+	-FlightManager(): construtor base que inicializa o conjunto de voos com os voos disponiveis dentro do voos.txt
 
-	-Retornflight(int codigo): Essa função aceita um código de voo como argumento e procura na lista de voos representada por flights_. Ela procura na lista de voos, verificando se o código do voo corresponde ao código fornecido.Se encontrar um voo com o código correspondente,retorna esse voo.
-	-changeflight(int , int ): utilizado como intermedio selecionar um assento no voo selecionado.
-	-addflight(Flight ): adiciona o dado voo no sistema que possui todos os voos, o disponiblizando para uso posteriormente.
-	-showflight(): Imprime no terminal todos os voos registrados no sistema e suas respectivas informações.
+	-changeFlight(int codigo, int seat): altera o voo que possui o mesmo codigo fazendo a reserva do acento seat nesse mesmo voo.
+
+	-addFlight(Flight): adiciona mais voos para o conjunto
+
+	-showFlights(): mostra todos os voos disponiveis no conjunto
+
+	-returnFlight(int n): Essa função aceita um código de voo como argumento e procura na lista de voos representada por flights_. Ela procura na lista de voos, verificando se o código do voo corresponde ao código fornecido.Se encontrar um voo com o código correspondente,retorna esse voo.
+
+	-manyFlights(): retorna a quantidade de voos do conjunto

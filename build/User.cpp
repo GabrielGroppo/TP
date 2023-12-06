@@ -1,8 +1,9 @@
 #include<iostream>
-#include <list>
-#include "src/FlightS.h"
-#include "src/Flight.h"
-#include "src/User.h"
+#include<list>
+#include<utility>
+#include "FlightManager.h"
+#include "Flight.h"
+#include "User.h"
 #include<vector>
     using namespace std;
 
@@ -12,7 +13,6 @@ user::user(){
     password_ = "";
     cpf_ = 0;
     credit_card = 0;
-    credit_card_debit = 0;
     tickets_;
 }
 
@@ -110,15 +110,21 @@ void user::checkTickets (){
     }
 }
 
-void user::cancelTicket(int codigo_voo, int seat, Flights& System){
-    if(System.returnFlight(codigo_voo).seatCheck(seat)){
+void user::cancelTicket(int codigo_voo, int seat, FlightManager& System){
+    Flight &aux =System.returnFlight(codigo_voo);
+    if(aux.seatCheck(seat)){
+        bool check=true;
         for(auto itr = tickets_.begin(); itr != tickets_.end(); itr++){
-            if(itr->seat == System.flights_[codigo_voo-1].seatCheck(seat)){
-                System.flights_[codigo_voo-1].cancelSeat(seat);
+            if(itr->voo==codigo_voo&&itr->seat==seat){
+                aux.cancelSeat(seat);
                   tickets_.erase(itr);
+                  check=false;
                   break;
             }
             // MENSAGEM DE O ASSENTO NÃO É SEU
+        }
+        if(check){
+            std::cout<<"esse assento nao eh seu"<<endl;
         }
     }
     else{
@@ -126,14 +132,46 @@ void user::cancelTicket(int codigo_voo, int seat, Flights& System){
     } 
 }
 
-void user::buyTicket(int codigo_voo, int seat, Flights& System){
-      if(System.returnFlight(codigo_voo).seatCheck(seat) == 0){
-          System.flights_[codigo_voo-1].getSeat(seat);
-          tickets_.push_front(System.returnFlight(codigo_voo).getTicket(seat));
+void user::buyTicket(int codigo_voo, int seat, FlightManager& System){
+    Flight &aux =System.returnFlight(codigo_voo);
+      if(aux.seatCheck(seat) == 0){
+          aux.getSeat(seat);
+          tickets_.push_front(aux.getTicket(seat));
       }
       else{
           std::cout<<"assento ocupado"<<endl;
       }
 }
+
+bool user::checkName(string name){
+    return name_ == name;
+}
+bool user::checkPassword(string password){
+    return password_== password;
+}
+bool user::checkCpf(long int cpf){
+    return cpf_== cpf;
+}
+profile user::ReturnProfile(){
+    profile user;
+    user.name = name_;
+    user.email = email_;
+    user.password = password_;
+    user.cpf = cpf_;
+    user.credit_card = credit_card;
+    for(auto it=tickets_.begin();it!=tickets_.end();it++){
+        pair<int,int> aux (it->voo,it->seat);
+        user.flight_info.push_back(aux);
+    }
+    return user;
+}
+
+
+
+
+
+
+
+
 
 

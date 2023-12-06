@@ -1,13 +1,13 @@
 #include<iostream>
-#include "src/FlightS.h"
-#include "src/Flight.h"
+#include "FlightManager.h"
+#include "Flight.h"
 #include<string>
 #include<vector>
 #include<fstream>
 
-Flights::Flights(){
+FlightManager::FlightManager(){
     std::ifstream arquivo;
-        arquivo.open("Dados_Vôos/Voos.txt");
+        arquivo.open("Data/voos.txt");
             if(!arquivo.is_open()){
                 std::cerr << "Erro ao abrir o txt" << std::endl;
             }
@@ -67,26 +67,30 @@ Flights::Flights(){
     arquivo.close();
 }
 
-void Flights::changeFlight(int codigo, int seat){
+void FlightManager::changeFlight(int codigo, int seat){
     flights_[codigo-1].getSeat(seat);
 }
 
-void Flights::addFlight(Flight x){
+void FlightManager::addFlight(Flight x){
     flights_.push_back(x);
 }
 
-void Flights::showFlights(){
+void FlightManager::showFlights(){
     for(int a = 0; a < flights_.size(); a++){
         flights_[a].printFlight();
 
     }
 }
 
-Flight Flights::returnFlight(int codigo){
+Flight& FlightManager::returnFlight(int codigo){
     for(int a = 0; a < flights_.size(); a++){
         if(codigo == flights_[a].code()){
             return flights_[a];
         }
     }
     return flights_[codigo];
+}
+
+int FlightManager::manyFlights(){
+    return flights_.size();
 }
